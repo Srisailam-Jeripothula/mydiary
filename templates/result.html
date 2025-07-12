@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Diary Entry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="diary-page">
+        <div class="date-top-right">
+            <script>
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                document.write(new Date().toLocaleDateString(undefined, options));
+            </script>
+        </div>
+
+        <div class="entry-content">
+            {{ diary_entry | safe }}
+        </div>
+    </div>
+
+    <a class="button-link" href="/">✏️ Write Another</a>
+    <a class="button-link" href="/entries">📚 See All Entries</a>
+</body>
+</html>

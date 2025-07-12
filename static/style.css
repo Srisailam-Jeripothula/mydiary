@@ -1,0 +1,207 @@
+body {
+    background-color: #f5f5dc; /* Wheat */
+    font-family: 'Georgia', serif;
+    padding: 40px;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.notebook {
+    background: repeating-linear-gradient(
+        white,
+        white 28px,
+        #ccc 29px
+    );
+    border: 2px solid #ddd;
+    padding: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+textarea {
+    width: 100%;
+    height: 400px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    line-height: 28px;
+    resize: none;
+    outline: none;
+    padding: 0;
+}
+
+button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 12px 30px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.date {
+    text-align: right;
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.notebook {
+    background: 
+        repeating-linear-gradient(
+            white,
+            white 28px,
+            #ccc 29px
+        ),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="30" opacity="0.05">📖 ✍️ 🖊️</text></svg>');
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    border: 2px solid #ddd;
+    padding: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    position: relative;
+}
+textarea {
+    position: relative;
+}
+
+textarea::after {
+    content: '🖊️';
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.button-link {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button-link:hover {
+    background-color: #555;
+}
+.textarea-wrapper {
+    position: relative;
+}
+
+.pen-cursor {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    font-size: 20px;
+    animation: blink 1s steps(2, start) infinite;
+    pointer-events: none;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+.diary-input {
+    min-height: 400px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    line-height: 28px;
+    outline: none;
+    white-space: pre-wrap;
+}
+
+.diary-input::after {
+    content: "🖊️";
+    animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+.diary-page {
+    background-color: #fdf6e3; /* warm off-white */
+    border: 2px solid #ddd;
+    padding: 60px;
+    max-width: 700px;
+    margin: 40px auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    position: relative;
+    line-height: 32px;
+    font-size: 18px;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 29px,
+        #999 30px
+    );
+    background-size: 100% 30px;
+}
+
+.diary-page .date-top-right {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 16px;
+    color: #555;
+}
+
+.entry-content {
+    white-space: pre-wrap;
+}
+
+.button-link {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin: 20px 10px;
+}
+
+.button-link:hover {
+    background-color: #555;
+}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Diary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>My Diary</h1>
+
+    <div class="notebook">
+        <div class="date">
+            <script>
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                document.write(new Date().toLocaleDateString(undefined, options));
+            </script>
+        </div>
+
+        <form action="/generate" method="post">
+            <div class="textarea-wrapper">
+                <div id="diaryInput" contenteditable="true" class="diary-input"></div>
+                <input type="hidden" name="entry" id="entryInput">
+            </div>
+            <button type="submit">Save Entry</button>
+        </form>
+    </div>
+
+    <a class="button-link" href="/entries">📚 See All Entries</a>
+
+    <script>
+        const form = document.querySelector("form");
+        const diaryInput = document.getElementById("diaryInput");
+        const entryInput = document.getElementById("entryInput");
+
+        form.addEventListener("submit", function(e) {
+            entryInput.value = diaryInput.innerText;
+        });
+    </script>
+</body>
+</html>
