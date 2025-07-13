@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
-from openai import OpenAI
+
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # Load environment variables
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 
 # Database configuration
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///diary.db"  # saves in root folder
