@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Diary</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Home - My Diary{% endblock %}
+
+{% block content %}
     <h1>My Diary</h1>
 
     <div class="notebook">
@@ -23,17 +21,4 @@
             <button type="submit">Save Entry</button>
         </form>
     </div>
-
-    <a class="button-link" href="/entries">📚 See All Entries</a>
-
-    <script>
-        const form = document.querySelector("form");
-        const diaryInput = document.getElementById("diaryInput");
-        const entryInput = document.getElementById("entryInput");
-
-        form.addEventListener("submit", function(e) {
-            entryInput.value = diaryInput.innerText;
-        });
-    </script>
-</body>
-</html>
+{% endblock %}

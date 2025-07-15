@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Entries for {{ date }} - My Diary{% endblock %}
+
+{% block content %}
+    <h1>Edit Entries for {{ date }}</h1>
+
+    <div class="diary-page">
+        <div class="date-top-right">
+            {{ date }}
+        </div>
+
+        <form method="post">
+            <textarea name="updated_content" rows="20" style="width: 100%;">{{ combined_content }}</textarea>
+            <br>
+            <button type="submit" class="button-link" style="background-color: #007bff;">
+                💾 Save Changes
+            </button>
+        </form>
+
+        <form action="/delete_day/{{ raw_date }}" method="post" style="margin-top: 20px;">
+            <button type="submit" class="button-link" style="background-color: #c00;">
+                🗑️ Delete Entire Day
+            </button>
+        </form>
+
+    </div>
+{% endblock %}

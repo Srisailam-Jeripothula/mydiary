@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Entries for {{ date }} - My Diary{% endblock %}
+
+{% block content %}
+    <h1>Diary Entries for {{ date }}</h1>
+
+    <div class="diary-page">
+        <div class="date-top-right">
+            {{ date }}
+        </div>
+        <div class="entry-content">
+            {{ combined_content | safe }}
+        </div>
+
+        <div style="margin-top: 20px;">
+            <a href="/edit/{{ date | replace(' ', '-') }}" class="button-link" style="background-color: #007bff;">
+                ✏️ Edit This Day
+            </a>
+
+            <form action="/delete_day/{{ date | replace(' ', '-') }}" method="post" style="display: inline;">
+                <button type="submit" class="button-link" style="background-color: #c00;">
+                    🗑️ Delete This Day
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
