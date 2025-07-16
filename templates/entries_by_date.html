@@ -14,15 +14,16 @@
         </div>
 
         <div style="margin-top: 20px;">
-            <a href="/edit/{{ date | replace(' ', '-') }}" class="button-link" style="background-color: #007bff;">
-                ✏️ Edit This Day
+            <a href="{{ url_for('edit_day', date=raw_date) }}" class="button-link" style="background-color: #007bff;">
+                 ✏️ Edit This Day
             </a>
 
-            <form action="/delete_day/{{ date | replace(' ', '-') }}" method="post" style="display: inline;">
+            <form action="{{ url_for('delete_day', date=raw_date) }}" method="post" style="display: inline;">
                 <button type="submit" class="button-link" style="background-color: #c00;">
-                    🗑️ Delete This Day
+                        🗑️ Delete This Day
                 </button>
             </form>
+
         </div>
     </div>
 {% endblock %}

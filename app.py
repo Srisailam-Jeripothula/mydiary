@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 import os
+from ai_utils import polish_text
+
 
 app = Flask(__name__)
 
@@ -17,6 +19,7 @@ db = SQLAlchemy(app)
 class DiaryEntry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
+    polished_content = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 # Home page
@@ -28,12 +31,14 @@ def home():
 @app.route("/generate", methods=["POST"])
 def generate():
     user_input = request.form["entry"].strip()
-    new_entry = DiaryEntry(content=user_input)
+    polished_text = polish_text(user_input)
+    new_entry = DiaryEntry(content=user_input, polished_content=polished_text)
     db.session.add(new_entry)
     db.session.commit()
 
     date = new_entry.created_at.strftime("%B %d, %Y")
-    return render_template("result.html", diary_entry=user_input, date=date)
+    return render_template("result.html", diary_entry=user_input, polished=polished_text, date=date)
+
 
 # All entries grouped by date
 @app.route("/entries")
@@ -52,7 +57,9 @@ def entries_by_date(date):
         DiaryEntry.created_at <= date_end
     ).order_by(DiaryEntry.created_at.asc()).all()
 
-    combined_content = "\n\n".join(entry.content for entry in entries_on_date)
+    combined_content = "\n\n".join(entry.polished_content for entry in entries_on_date)
+
+
 
     return render_template(
         "entries_by_date.html",
