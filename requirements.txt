@@ -1,6 +1,6 @@
 Flask
 flask_sqlalchemy
 transformers
-torch==2.7.1+cpu
+torch==2.7.1
 python-dotenv
 gunicorn==23.0.0
