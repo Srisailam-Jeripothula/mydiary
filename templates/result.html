@@ -1,15 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="diary-page">
-        <div class="date-top-right">
-            {{ date }}
-        </div>
-        <div class="entry-content">
-            {{ diary_entry | safe }}
-            <h3>Polished Version:</h3>
-            <p>{{ polished }}</p>
+<div class="diary-page">
+  <div class="date-top-right">
+    {{ date }}
+  </div>
 
-        </div>
-    </div>
+  <div class="entry-content">
+    <h3>Original Entry:</h3>
+    <p>{{ diary_entry | safe }}</p>
+
+    <h3>Polished Version:</h3>
+    <p>{{ polished }}</p>
+
+    {% if foods_info %}
+      <h3>Nutrition Info:</h3>
+      <ul>
+        {% for food in foods_info %}
+          <li>{{ food }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if travel_info %}
+      <h3>Travel Info:</h3>
+      <p>{{ travel_info }}</p>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}
+

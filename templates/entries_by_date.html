@@ -3,27 +3,42 @@
 {% block title %}Entries for {{ date }} - My Diary{% endblock %}
 
 {% block content %}
-    <h1>Diary Entries for {{ date }}</h1>
+  <h1>Diary Entries for {{ date }}</h1>
 
-    <div class="diary-page">
-        <div class="date-top-right">
-            {{ date }}
-        </div>
-        <div class="entry-content">
-            {{ combined_content | safe }}
-        </div>
-
-        <div style="margin-top: 20px;">
-            <a href="{{ url_for('edit_day', date=raw_date) }}" class="button-link" style="background-color: #007bff;">
-                 ✏️ Edit This Day
-            </a>
-
-            <form action="{{ url_for('delete_day', date=raw_date) }}" method="post" style="display: inline;">
-                <button type="submit" class="button-link" style="background-color: #c00;">
-                        🗑️ Delete This Day
-                </button>
-            </form>
-
-        </div>
+  <div class="diary-page">
+    <div class="date-top-right">
+      {{ date }}
     </div>
+
+    <div class="entry-content">
+      <h3>Polished Entries:</h3>
+      <p>{{ combined_content | safe }}</p>
+
+      {% if foods_info %}
+        <h3>Nutrition Info:</h3>
+        <ul>
+          {% for food in foods_info %}
+            <li>{{ food }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if travel_info %}
+        <h3>Travel Info:</h3>
+        <p>{{ travel_info }}</p>
+      {% endif %}
+    </div>
+
+    <div style="margin-top: 20px;">
+      <a href="{{ url_for('edit_day', date=raw_date) }}" class="button-link" style="background-color: #007bff;">
+        ✏️ Edit This Day
+      </a>
+
+      <form action="{{ url_for('delete_day', date=raw_date) }}" method="post" style="display: inline;">
+        <button type="submit" class="button-link" style="background-color: #c00;">
+          🗑️ Delete This Day
+        </button>
+      </form>
+    </div>
+  </div>
 {% endblock %}
