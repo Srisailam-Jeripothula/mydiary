@@ -63,21 +63,6 @@ To solve this, I built a lightweight, private web app that **passively extracts 
 
 ---
 
-## 🗂️ Project Structure
-
-├── app.py # Flask app controller
-├── ai_utils.py # AI text polishing & workflow integration
-├── ner_utils.py # Entity extraction + API calls
-├── templates/
-│ ├── index.html # Diary input form
-│ ├── result.html # Processed output display
-│ └── entries_by_date.html
-├── static/
-├── .env # Contains API keys (excluded from Git)
-├── requirements.txt
-
----
-
 ## 📈 Use Case
 
 **For Users:** A smarter, more insightful way to keep track of what you eat and where you go.
